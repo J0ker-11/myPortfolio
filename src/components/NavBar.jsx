@@ -5,7 +5,7 @@ import { Menu, X } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 
 
-const NavaBar = () => {
+const NavBar = () => {
 const navItems = [
     {name: "Home", href: "#hero"},
     {name: "About", href: "#about"},
@@ -33,7 +33,7 @@ useEffect(() => {
         <div className='container flex items-center justify-between'>
             <a href="#hero" className='text-xl font-bold text-primary flex items-center'>
                 <span className='relative z-10'>
-                    <span className='text-glow text-foreground'> Hassan</span> Portfolio
+                    <span className='text-glow text-foreground'> Joker</span> Portfolio
                 </span>
             </a>
 
@@ -59,7 +59,7 @@ useEffect(() => {
         <div className={cn("fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center", "transition-all duration-300 md:hidden", isMenuOpen ? "opacity-100 pointe-events-auto" : "opacity-0 pointer-events-none" )}>
         <div className='flex flex-col space-y-8 text-xl'>
             {navItems.map((item, key) => (
-                <a onClick={() => isMenuOpen((prev) => !prev)} href={item.href} key={key} className='text-foreground/80 hover:text-primary transition-colors duration-300'>
+                <a  href={item.href} key={key} className='text-foreground/80 hover:text-primary transition-colors duration-300' onClick={() => setIsMenuOpen((prev) => !prev)}>
                 {item.name}
             </a>
             ))}
@@ -74,4 +74,4 @@ useEffect(() => {
   )
 }
 
-export default NavaBar
+export default NavBar
