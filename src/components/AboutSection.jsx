@@ -3,7 +3,7 @@ import { Code, User, Briefcase } from 'lucide-react'
 
 const AboutSection = () => {
   return (
-    <section id='#about' className='relative py-24 px-4'>
+    <section id='about' className='relative py-24 px-4'>
         <div className='container mx-auto max-w-5xl'>
           <h2 className='text-3xl md:text-4xl font-bold mb-12 text-center'>
             About <span className='text-primary'> Me</span>
@@ -56,12 +56,11 @@ const AboutSection = () => {
                   <div className='p-3 rounded-full bg-primary/10'>
                   <Briefcase className='h-6 w-6 text-primary'/>
                   </div>
-                  
-                </div>
-                <div className='text-left'>
+                  <div className='text-left'>
                     <h4 className='font-semibold text-lg'> Project Management </h4>
                     <p className='text-muted-foreground'> Leading project from conception to completion with agile methodologies </p>
                   </div>
+                </div>
               </div>
             </div>
             
