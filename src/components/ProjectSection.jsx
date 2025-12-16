@@ -1,5 +1,6 @@
 import React from 'react'
 import GrowMetra from '../../public/projects/GrowMetra.png'
+import TrustXpect from '../../public/projects/TrustXpect.png'
 import { ArrowRight, ExternalLink, Github} from 'lucide-react'
 
 const ProjectSection = () => {
@@ -18,9 +19,9 @@ const ProjectSection = () => {
             id: 2,
             title: "Landing Page",
             description: "A beautiful Landing page using React and tailwindcss",
-            image: GrowMetra,
+            image: TrustXpect,
             tags: ["React", "Tailwindcss"],
-            demoUrl: "#",
+            demoUrl: "https://trustxpect.vercel.app/",
             githubUrl: "#",
         },
         {
