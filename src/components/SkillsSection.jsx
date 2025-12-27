@@ -1,24 +1,26 @@
 import React, { useState } from 'react'
 import { cn } from '@/lib/utils'
+import { Figma, Framer, Github } from 'lucide-react';
 
 const SkillsSection = () => {
     
 
     const skills = [
         // Frontend
-        {name: 'HTML/CSS', level: 95, category: 'Frontend'},
-        {name: 'Javascript', level: 80, category: 'Frontend'},
-        {name: 'Tailwindcss', level: 80, category: 'Frontend'},
-        {name: 'React.js', level: 80, category: 'Frontend'},
-        {name: 'Next.js', level: 80, category: 'Frontend'},
+        {name: 'HTML/CSS', level: 95, category: 'Frontend' , icon:"" },
+        {name: 'Javascript', level: 80, category: 'Frontend' , icon:""
+        },
+        {name: 'Tailwindcss', level: 80, category: 'Frontend', icon:"" },
+        {name: 'React.js', level: 80, category: 'Frontend', icon:"" },
+        {name: 'Next.js', level: 80, category: 'Frontend', icon:"" },
 
         // Backend 
 
         // Tools 
-        {name: 'Git/GitHub', level: 90, category: 'Tools'},
-        {name: 'Vscode', level: 95, category: 'Tools'},
-        {name: 'Figma', level: 75, category: 'Tools'},
-        {name: 'Framer', level: 70, category: 'Tools'},
+        {name: 'Git/GitHub', level: 90, category: 'Tools', icon:"" },
+        {name: 'Vscode', level: 95, category: 'Tools', icon:""},
+        {name: 'Figma', level: 75, category: 'Tools', icon:"" },
+        {name: 'Framer', level: 70, category: 'Tools', icon:"" },
     ]
 
     const [activeCategory, setActiveCategory] = useState("all");
@@ -43,17 +45,18 @@ const SkillsSection = () => {
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
                 {filteredSkills.map((skill,key) => (
                     <div key={key} className='bg-card p-6 rounded-lg shadow-xs card-hover'>
-                        <div className='text-left mb-4'>
+                        <div className='text-center mb-4'>
+                            
                             <h3 className='font-semibold text-lg'>{skill.name}</h3>
                         </div>
-                        <div className='w-full bg-secondary/50 h-2 rounded-full overflow-hidden'>
+                       {/*  <div className='w-full bg-secondary/50 h-2 rounded-full overflow-hidden'>
                             <div className="bg-primary h-2 rounded-full origin-left animate-[grow_1.5s_ease-out]" style={{ width:skill.level + "%"}}>
                             </div>
                             
                         </div>
                         <div className='text-right mt-1'>
                                 <span className='text-sm text-muted-foreground'>{skill.level}%</span>
-                            </div>
+                            </div> */}
                     </div>
                 ))}
             </div>
