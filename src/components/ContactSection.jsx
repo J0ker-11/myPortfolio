@@ -58,7 +58,7 @@ const ContactSection = () => {
                 <div className='pt-8'>
                     <h4 className='font-medium mb-4'>Connect With Me</h4>
                     <div className='flex space-x-4 justify-center'>
-                            <a href="#" target='_blank'>
+                            <a href="www.linkedin.com/in/tijani-hassan-048a782a6" target='_blank'>
                                 <Linkedin />
                             </a>
                             <a href="#" target='_blank'>
