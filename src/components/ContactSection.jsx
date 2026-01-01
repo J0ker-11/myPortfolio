@@ -7,6 +7,7 @@ const ContactSection = () => {
     const [email, setEmail] = useState("")
     const [message, setMessage] = useState("")
     const [error, setError] = useState("")
+    const [isSuccess, setIsSuccess] = useState(false)
 
     const handleRegister = async (e) => {
         e.preventDefault()
@@ -38,9 +39,10 @@ const ContactSection = () => {
                 'Accept': 'application/json'
             }
         });
+        
 
         if (response.ok) {
-            alert("Message sent successfully!");
+        setIsSuccess(true)
             // Clear the inputs
             setName("");
             setEmail("");
@@ -123,27 +125,37 @@ const ContactSection = () => {
 
             <div className='bg-card p-8 rounded-lg shadow-xs'>
                 <h3 className='text-2xl font-semibold mb-6'>Send a Message</h3>
+               { isSuccess ? (
+                <div className="text-center py-10">
+                <h3 className="text-2xl font-bold text-green-500">Success!</h3>
+                <p>Your message has been Delivered</p>
+                <button onClick={() => setIsSuccess(false)} className="mt-4 text-blue-500 text-sm underline cursor-pointer">
+                  Send another?
+                </button>
+              </div>
+               ) : (
                 <form  onSubmit={handleRegister}  className='space-y-6'>
-                    <div>
-                        <label htmlFor="name" className='block text-left text-sm font-medium mb-2'>Your Name</label>
-                        <input  type="text" value={name} onChange={(e) => setName(e.target.value)} id='name' name='name' className={`w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary  ${error && "border border-red-600"}`} placeholder='Tijani Hassan...'/>
-                    </div>
-                    <div>
-                        <label htmlFor="email" className='block text-left text-sm font-medium mb-2'>Your Email</label>
-                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} id='email' name='email'  className={`w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary ${error && "border border-red-600"}`} placeholder='info@gmail.com'/>
-                    </div>
-                    <div>
-                        <label htmlFor="message" className='block text-left text-sm font-medium mb-2'>Your Message</label>
-                        <textarea id='message' 
-                         name='message' value={message} onChange={(e) => setMessage(e.target.value)}  className={`w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary resize-none ${error && "border border-red-600"}`}  placeholder="Hello,i'd like to talk about... "/>
-                    </div>
+                <div>
+                    <label htmlFor="name" className='block text-left text-sm font-medium mb-2'>Your Name</label>
+                    <input  type="text" value={name} onChange={(e) => setName(e.target.value)} id='name' name='name' className={`w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary  ${error && "border border-red-600"}`} placeholder='Tijani Hassan...'/>
+                </div>
+                <div>
+                    <label htmlFor="email" className='block text-left text-sm font-medium mb-2'>Your Email</label>
+                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} id='email' name='email'  className={`w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary ${error && "border border-red-600"}`} placeholder='info@gmail.com'/>
+                </div>
+                <div>
+                    <label htmlFor="message" className='block text-left text-sm font-medium mb-2'>Your Message</label>
+                    <textarea id='message' 
+                     name='message' onChange={(e) => setMessage(e.target.value)}   className={`w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary resize-none ${error && "border border-red-600"}`}  placeholder="Hello,i'd like to talk about... "/>
+                </div>
 
-                    <button type='submit' className='cosmic-button w-full flex justify-center items-center gap-2'>
-                        Send Message <Send size={16} />
-                    </button>
-                    {error &&
-                        <p className='text-red-500 text-sm font-medium'>{error}</p> }
-                </form>
+                <button type='submit' className='cosmic-button w-full flex justify-center items-center gap-2'>
+                    Send Message <Send size={16} />
+                </button>
+                {error &&
+                    <p className='text-red-500 text-sm font-medium'>{error}</p> }
+            </form>
+               )}
             </div>
         </div>
         </div>
