@@ -1,7 +1,54 @@
 import { Instagram, Linkedin, Mail, MapPin, Phone, Send, Twitch, Twitter } from 'lucide-react'
-import React from 'react'
+import React, { useState } from 'react'
 
 const ContactSection = () => {
+
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [message, setMessage] = useState("")
+    const [error, setError] = useState("")
+
+    const handleRegister = async (e) => {
+        e.preventDefault()
+
+        // name validation
+        if (name === "") {
+            setError("Please Enter a name")
+            return   
+        }
+
+        // email validation
+        if (!email.includes ("@")) {
+            setError("Email is not valid")
+            return
+        }
+
+        // message validation
+        if (message === "") {
+            setError("Message is empty")
+            return
+        }
+
+        setError("")
+
+        const  response = await fetch("https://formspree.io/f/xbdljaqw", {
+            method: "POST",
+            body: JSON.stringify({ name, email, message }),
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            alert("Message sent successfully!");
+            // Clear the inputs
+            setName("");
+            setEmail("");
+            setMessage("");
+        } else {
+            setError("Something went wrong with the server.");
+        }
+    }
 
   return (
     <section id='contact' className='py-24 px-4 relative bg-secondary/30'>
@@ -76,23 +123,26 @@ const ContactSection = () => {
 
             <div className='bg-card p-8 rounded-lg shadow-xs'>
                 <h3 className='text-2xl font-semibold mb-6'>Send a Message</h3>
-                <form action="" className='space-y-6'>
+                <form  onSubmit={handleRegister}  className='space-y-6'>
                     <div>
                         <label htmlFor="name" className='block text-left text-sm font-medium mb-2'>Your Name</label>
-                        <input type="text" id='name' name='name' required className='w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary' placeholder='Tijani Hassan...'/>
+                        <input  type="text" value={name} onChange={(e) => setName(e.target.value)} id='name' name='name' className={`w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary  ${error && "border border-red-600"}`} placeholder='Tijani Hassan...'/>
                     </div>
                     <div>
                         <label htmlFor="email" className='block text-left text-sm font-medium mb-2'>Your Email</label>
-                        <input type="email" id='email' name='email' required className='w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary' placeholder='info@gmail.com'/>
+                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} id='email' name='email'  className={`w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary ${error && "border border-red-600"}`} placeholder='info@gmail.com'/>
                     </div>
                     <div>
                         <label htmlFor="message" className='block text-left text-sm font-medium mb-2'>Your Message</label>
-                        <textarea id='message' name='message' required className='w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary resize-none'  placeholder="Hello,i'd like to talk about... "/>
+                        <textarea id='message' 
+                         name='message' value={message} onChange={(e) => setMessage(e.target.value)}  className={`w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary resize-none ${error && "border border-red-600"}`}  placeholder="Hello,i'd like to talk about... "/>
                     </div>
 
                     <button type='submit' className='cosmic-button w-full flex justify-center items-center gap-2'>
                         Send Message <Send size={16} />
                     </button>
+                    {error &&
+                        <p className='text-red-500 text-sm font-medium'>{error}</p> }
                 </form>
             </div>
         </div>

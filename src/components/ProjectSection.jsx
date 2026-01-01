@@ -43,8 +43,8 @@ const ProjectSection = () => {
                 Here are some of my recent projects. Each project was crafted with attention to detail, performance, and user experience.
             </p>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 '>
-                {projects.map((project,key) => (
-                    <div key={key} className='group bg-card rounded-lg overflow-hidden '>
+                {projects.map((project) => (
+                    <div key={project.id} className='group bg-card rounded-lg overflow-hidden '>
                         <div className='h-48 overflow-hidden'>
                             <img src={project.image} alt={project.title} className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' />
                         </div>
