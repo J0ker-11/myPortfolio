@@ -11,7 +11,7 @@ const ProjectSection = () => {
         {
             id: 1,
             title: "E-commerce webpage",
-            description: "A beautiful Landing page using React and tailwindcss",
+            description: "A beautiful E-commerce Webpage page using React and tailwindcss",
             image: GrowMetra,
             tags: ["React", "Tailwindcss"],
             demoUrl: "https://grow-metra11.vercel.app/",
