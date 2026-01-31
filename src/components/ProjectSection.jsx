@@ -2,6 +2,7 @@ import React from 'react'
 import GrowMetra from '../../public/projects/GrowMetra.png'
 import TrustXpect from '../../public/projects/TrustXpect.png'
 import JejeOla from '../../public/projects/JejeOla.png'
+import allRecipe from '../../public/projects/allRecipe.png'
 import { ArrowRight, ExternalLink, Github} from 'lucide-react'
 
 const ProjectSection = () => {
@@ -9,7 +10,7 @@ const ProjectSection = () => {
     const projects = [
         {
             id: 1,
-            title: "Landing Page",
+            title: "E-commerce webpage",
             description: "A beautiful Landing page using React and tailwindcss",
             image: GrowMetra,
             tags: ["React", "Tailwindcss"],
@@ -32,6 +33,15 @@ const ProjectSection = () => {
             image: JejeOla,
             tags: ["HTML", "CSS"],
             demoUrl: "https://jeje-ola-properties.vercel.app/",
+            githubUrl: "#",
+        },
+        {
+            id: 4,
+            title: "Landing Page",
+            description: "A beautiful Landing page using React and tailwindcss",
+            image: allRecipe,
+            tags: ["React", "Tailwindcss"],
+            demoUrl: "https://all-recipe.vercel.app/",
             githubUrl: "#",
         },
     ]
